@@ -1,4 +1,4 @@
-# 🧠 TradeMind
+#  TradeMind
 
 ### AI Trading Strategy Analyst — Your Disciplined, Data-Driven Edge
 
@@ -235,21 +235,9 @@ npx @open-gitagent/gitagent export -f system-prompt
 
 ---
 
-## 🏆 Why TradeMind?
-
-| Criteria | How TradeMind Delivers |
-|----------|----------------------|
-| **Agent Quality (30%)** | Deep, compelling SOUL.md with veteran trader personality. Rules enforce risk-first philosophy with psychological safety awareness. |
-| **Skill Design (25%)** | 6 focused, extensively documented skills with structured output formats, progressive disclosure, skill chaining, and real-world trading workflows. |
-| **Working Demo (25%)** | Runs via gitclaw CLI, SDK, and clawless. Pure JS tools with zero dependencies for WebContainer compatibility. 5 interactive demos + standalone live-data demo. |
-| **Creativity (20%)** | Unique domain — no other gitagent tackles trading. Monte Carlo simulation + crash stress testing via pure JS tools. Skill chaining across analysis → simulation → sizing → planning → journaling. Trading psychology & mental health awareness. |
-
----
 
 ## 📜 License
 
 MIT — Trade responsibly. This is a tool, not a financial advisor.
 
 ---
-
-*Built with 🧠 by [Tanish Singla](https://github.com/TanishSingla) for the gitagent Hackathon*
