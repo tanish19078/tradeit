@@ -1,0 +1,84 @@
+name: monte-carlo-simulator
+description: "Runs Monte Carlo simulations on trading strategy parameters to estimate risk of ruin, drawdown distributions, equity curve confidence intervals, and stress-tests against historical crash scenarios. Pure JavaScript, zero dependencies."
+version: 1.0.0
+
+input_schema:
+  type: object
+  properties:
+    command:
+      type: string
+      enum: [simulate, stress-test]
+      description: "The simulation command: 'simulate' for Monte Carlo, 'stress-test' for crash scenarios"
+    initialCapital:
+      type: number
+      description: "Starting account balance in dollars"
+      default: 50000
+    winRate:
+      type: number
+      description: "Win probability as decimal (0-1). Example: 0.55 for 55% win rate"
+      default: 0.55
+    avgWin:
+      type: number
+      description: "Average winning trade amount in dollars"
+      default: 300
+    avgLoss:
+      type: number
+      description: "Average losing trade amount in dollars (positive number)"
+      default: 200
+    tradesPerSim:
+      type: number
+      description: "Number of trades per simulation run"
+      default: 200
+    numSimulations:
+      type: number
+      description: "Number of Monte Carlo iterations (higher = more accurate)"
+      default: 1000
+    riskPerTrade:
+      type: number
+      description: "Risk per trade as fraction of account (0-1). Used when fixedSize is false"
+      default: 0.01
+    fixedSize:
+      type: boolean
+      description: "If true, use fixed dollar amounts. If false, use percent-of-equity sizing"
+      default: true
+    ruinThreshold:
+      type: number
+      description: "Account loss fraction that constitutes ruin (0-1). Default 0.5 = 50% loss"
+      default: 0.5
+    seed:
+      type: number
+      description: "Random seed for reproducible results. Omit for random seed."
+  required: [command]
+
+output_schema:
+  type: object
+  properties:
+    strategyMetrics:
+      type: object
+      description: "Expectancy, profit factor, Kelly criterion calculations"
+    finalEquity:
+      type: object
+      description: "Distribution of final account balances across simulations"
+    returns:
+      type: object
+      description: "Probability of profit, doubling, mean/median returns"
+    drawdown:
+      type: object
+      description: "Drawdown distribution from median to worst case"
+    riskOfRuin:
+      type: object
+      description: "Ruin probability and assessment"
+    streaks:
+      type: object
+      description: "Losing and winning streak analysis"
+
+implementation:
+  type: script
+  path: monte-carlo-simulator.js
+  runtime: node
+  timeout: 30
+
+annotations:
+  requires_confirmation: false
+  read_only: true
+  cost: low

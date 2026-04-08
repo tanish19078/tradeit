@@ -1,0 +1,6 @@
+documents:
+  - path: trading-glossary.md
+    tags: [trading, glossary, reference, terminology]
+    priority: medium
+    always_load: false
+    description: "Comprehensive trading terminology covering ICT, SMC, classical TA, and risk management concepts"

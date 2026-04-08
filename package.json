@@ -1,0 +1,39 @@
+{
+  "name": "trademind",
+  "version": "1.1.0",
+  "description": "AI trading strategy analyst — analyzes strategies, builds market bias, journals trades, audits risk, engineers Pine Script, and simulates portfolio risk via Monte Carlo",
+  "main": "demo.js",
+  "scripts": {
+    "demo": "node demo.js all",
+    "demo:strategy": "node demo.js strategy",
+    "demo:journal": "node demo.js journal",
+    "demo:risk": "node demo.js risk",
+    "demo:bias": "node demo.js bias",
+    "demo:montecarlo": "node demo.js montecarlo",
+    "demo:standalone": "node demo-standalone.js",
+    "demo:standalone:btc": "node demo-standalone.js BTC-USD 6mo",
+    "demo:standalone:spy": "node demo-standalone.js SPY 3mo",
+    "validate": "npx @open-gitagent/gitagent validate",
+    "info": "npx @open-gitagent/gitagent info",
+    "export:prompt": "npx @open-gitagent/gitagent export -f system-prompt",
+    "export:claude": "npx @open-gitagent/gitagent export -f claude-code",
+    "start": "npx gitclaw --dir ."
+  },
+  "keywords": [
+    "gitagent",
+    "trading",
+    "pine-script",
+    "tradingview",
+    "strategy",
+    "risk-management",
+    "technical-analysis",
+    "monte-carlo",
+    "ai-agent",
+    "quantitative"
+  ],
+  "author": "Tanish Singla",
+  "license": "MIT",
+  "dependencies": {
+    "gitclaw": "latest"
+  }
+}

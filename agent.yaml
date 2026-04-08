@@ -1,0 +1,51 @@
+spec_version: "0.1.0"
+name: trademind
+version: 1.1.0
+description: "AI trading strategy analyst — analyzes strategies, builds market bias, journals trades, audits risk, engineers Pine Script, and simulates portfolio outcomes via Monte Carlo"
+author: "Tanish Singla"
+license: MIT
+
+model:
+  preferred: claude-sonnet-4-5-20250929
+  fallback:
+    - gpt-4o
+    - gemini-2.5-pro
+  constraints:
+    temperature: 0.3
+    max_tokens: 16384
+
+skills:
+  - strategy-analyzer
+  - bias-builder
+  - trade-journal
+  - risk-auditor
+  - pine-engineer
+  - risk-simulator
+
+tools:
+  - fetch-market-data
+  - compute-indicators
+  - monte-carlo-simulator
+
+runtime:
+  max_turns: 100
+  timeout: 600
+
+tags:
+  - hackathon
+  - trading
+  - finance
+  - technical-analysis
+  - pine-script
+  - tradingview
+  - strategy
+  - risk-management
+  - monte-carlo
+  - quantitative
+
+metadata:
+  domain: "quantitative-trading"
+  target_users: "retail-traders, swing-traders, day-traders"
+  data_sources: "TradingView, Pine Script, trade journals, market data APIs"
+  clawless_compatible: true
+  zero_dependencies: true

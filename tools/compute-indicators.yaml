@@ -1,0 +1,49 @@
+name: compute-indicators
+description: "Computes technical indicators (SMA, EMA, RSI, MACD, ATR, Bollinger Bands, VWAP, etc.) from OHLCV data"
+version: 1.0.0
+
+input_schema:
+  type: object
+  properties:
+    candles:
+      type: array
+      description: "Array of OHLCV candle objects"
+      items:
+        type: object
+        properties:
+          open: { type: number }
+          high: { type: number }
+          low: { type: number }
+          close: { type: number }
+          volume: { type: number }
+    indicators:
+      type: array
+      description: "List of indicators to compute"
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            enum: [sma, ema, rsi, macd, atr, bollinger, vwap, stochastic, adx, obv, fibonacci]
+          params:
+            type: object
+            description: "Indicator-specific parameters (e.g., period, stddev)"
+  required: [candles, indicators]
+
+output_schema:
+  type: object
+  properties:
+    results:
+      type: object
+      description: "Map of indicator name to computed values array"
+
+implementation:
+  type: script
+  path: compute-indicators.js
+  runtime: node
+  timeout: 15
+
+annotations:
+  requires_confirmation: false
+  read_only: true
+  cost: low

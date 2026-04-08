@@ -1,0 +1,59 @@
+name: fetch-market-data
+description: "Fetches historical OHLCV market data for a given instrument and timeframe using free APIs (Yahoo Finance, CoinGecko, etc.)"
+version: 1.0.0
+
+input_schema:
+  type: object
+  properties:
+    symbol:
+      type: string
+      description: "Ticker symbol (e.g., AAPL, BTC-USD, EUR/USD, ES=F)"
+    timeframe:
+      type: string
+      enum: [1m, 5m, 15m, 1h, 4h, 1d, 1w]
+      description: "Candle timeframe"
+    period:
+      type: string
+      description: "Lookback period (e.g., 30d, 6mo, 1y, 5y)"
+      default: "6mo"
+    include_volume:
+      type: boolean
+      description: "Include volume data"
+      default: true
+  required: [symbol, timeframe]
+
+output_schema:
+  type: object
+  properties:
+    symbol:
+      type: string
+    timeframe:
+      type: string
+    candles:
+      type: array
+      items:
+        type: object
+        properties:
+          timestamp: { type: string, format: date-time }
+          open: { type: number }
+          high: { type: number }
+          low: { type: number }
+          close: { type: number }
+          volume: { type: number }
+    metadata:
+      type: object
+      properties:
+        total_candles: { type: integer }
+        date_range: { type: string }
+        source: { type: string }
+
+implementation:
+  type: script
+  path: fetch-market-data.js
+  runtime: node
+  timeout: 30
+
+annotations:
+  requires_confirmation: false
+  read_only: true
+  cost: low
